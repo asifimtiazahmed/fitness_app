@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_app_fitness_app_ui/data/exercise_sets.dart';
 import 'package:flutter_app_fitness_app_ui/model/exercise_set.dart';
+import '../widgets/exercise_set_widget.dart';
 
 
 class ExercisesWidget extends StatefulWidget {
@@ -33,19 +34,19 @@ ExerciseType selectedType = ExerciseType.low;
     )
   );
 
-  // Widget buildWorkouts() => GestureDetector(
-  //   onHorizontalDragEnd: swipeFunction,
-  //   child: Column(
-  //     children: exerciseSets
-  //     .where((element)=> element.exerciseType == selectedType)
-  //         .map(
-  //         (exerciseSet) => Container(
-  //           margin: const EdgeInsets.symmetric(vertical: 10),
-  //           child: ExerciseSetWidget(exerciseSet: exerciseSet),),
-  //     )
-  //         .toList(),
-  //   ),
-  // );
+  Widget buildWorkouts() => GestureDetector(
+    onHorizontalDragEnd: swipeFunction,
+    child: Column(
+      children: exerciseSets
+      .where((element)=> element.exerciseType == selectedType)
+          .map(
+          (exerciseSet) => Container(
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            child: ExerciseSetWidget(exerciseSet: exerciseSet),),
+      )
+          .toList(),
+    ),
+  );
 
 Widget buildDifficultyLevel() => Row(
   children: ExerciseType.values.map(
